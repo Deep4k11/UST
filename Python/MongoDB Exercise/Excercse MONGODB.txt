@@ -1,0 +1,352 @@
+Create DB
+-----------------------
+
+use newHRDatabase
+
+Create new collection
+---------------
+db.createCollection("PersonalInfo")
+
+
+
+Adding Documents to PersonalInfo
+------------------------
+
+db.PersonalInfo.insertMany([{empid : 'X20221010', EmpName : 'Pritam', Age:26,Gender:'Male',Contact:9988776655,City : 'Delhi'},{empid : 'X20221011', EmpName : 'Gitanjali', Age:27,Gender:'Female',City : 'Newyork'}])
+
+db.PersonalInfo.insertMany([{empid : 'X20221013', EmpName : 'Sonam', Age:29,Gender:'Female',Contact:7788995533,City : 'Bengaluru'},{empid : 'X20221017', EmpName : 'Shekhar', Age:29,Gender:'Male',City : 'Pune'}])
+
+
+
+Create new collection
+---------------
+db.createCollection("ProfessionalInfo")
+
+Adding Documents to ProfessionalInfo
+------------------------
+
+db.ProfessionalInfo.insertMany([{Designation:'Consultant',Department:'Finance',Income:80000},{Designation:'Sr.Developer',Department:'IT',Income:90000},{Designation:'Data Analyst',Department:'Software',Income:150000},{Designation:'Manager',Department:'Logistics',Income:200000}])
+
+
+View Collections
+------------------------
+
+db.PersonalInfo.find().pretty()
+db.ProfessionalInfo.find().pretty()
+
+
+Update Details
+------------------------------------
+
+db.PersonalInfo.update({Age:27},{$set:{Age:25}})
+db.PersonalInfo.update({Age:29,City:'Bengaluru'},{$set:{Age:31,City:'Kolkata'}})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Please enter a MongoDB connection string (Default: mongodb://localhost/):
+
+Current Mongosh Log ID: 6348e3bad32238d2ae685700
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.6.0
+Using MongoDB:          6.0.2
+Using Mongosh:          1.6.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2022-10-14T05:01:25.512+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+------
+   Enable MongoDB's free cloud-based monitoring service, which will then receive and display
+   metrics about your deployment (disk utilization, CPU, operation statistics, etc).
+
+   The monitoring data will be available on a MongoDB website with a unique URL accessible to you
+   and anyone you share the URL with. MongoDB may use this information to make product
+   improvements and to suggest MongoDB products and deployment options to you.
+
+   To enable free monitoring, run the following command: db.enableFreeMonitoring()
+   To permanently disable this reminder, run the following command: db.disableFreeMonitoring()
+------
+
+test> use newHRDatabase
+switched to db newHRDatabase
+newHRDatabase> db.createCollection(PersonalInfo)
+ReferenceError: PersonalInfo is not defined
+newHRDatabase> db.createCollecton('Personalnfo')
+TypeError: db.createCollecton is not a function
+newHRDatabase> db.createCollection("PersonalInfo")
+{ ok: 1 }
+newHRDatabase> show collections
+PersonalInfo
+newHRDatabase> db.PersonalInfo.insertMany([{empid : X20221010, EmpName : 'Pritam', Age:26,Gender:'Male',Contact:9988776655,City : 'Delhi'},{empid : X20221011, EmpName : 'Gitanjali', Age:27,Gender:'Female',City : 'Newyork'}])
+ReferenceError: X20221010 is not defined
+newHRDatabase> db.PersonalInfo.insertMany([{empid : 'X20221010', EmpName : 'Pritam', Age:26,Gender:'Male',Contact:9988776655,City : 'Delhi'},{empid : 'X20221011', EmpName : 'Gitanjali', Age:27,Gender:'Female',City : 'Newyork'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6348e6b96defcc82cf3dafc3"),
+    '1': ObjectId("6348e6b96defcc82cf3dafc4")
+  }
+}
+newHRDatabase> db.PersonalInfo.insertMany([{empid : 'X20221013', EmpName : 'Sonam', Age:27,Gender:'Female',Contact:7788995533,City : 'Bengaluru'},{empid : 'X20221017', EmpName : 'Shekhar', Age:29,Gender:'Male',City : 'Pune'}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6348e7426defcc82cf3dafc5"),
+    '1': ObjectId("6348e7426defcc82cf3dafc6")
+  }
+}
+newHRDatabase> db.PersonalInfo.find.pretty()
+TypeError: db.PersonalInfo.find.pretty is not a function
+newHRDatabase> db.PersonalInfo.find().pretty()
+[
+  {
+    _id: ObjectId("6348e6b96defcc82cf3dafc3"),
+    empid: 'X20221010',
+    EmpName: 'Pritam',
+    Age: 26,
+    Gender: 'Male',
+    Contact: 9988776655,
+    City: 'Delhi'
+  },
+  {
+    _id: ObjectId("6348e6b96defcc82cf3dafc4"),
+    empid: 'X20221011',
+    EmpName: 'Gitanjali',
+    Age: 27,
+    Gender: 'Female',
+    City: 'Newyork'
+  },
+  {
+    _id: ObjectId("6348e7426defcc82cf3dafc5"),
+    empid: 'X20221013',
+    EmpName: 'Sonam',
+    Age: 27,
+    Gender: 'Female',
+    Contact: 7788995533,
+    City: 'Bengaluru'
+  },
+  {
+    _id: ObjectId("6348e7426defcc82cf3dafc6"),
+    empid: 'X20221017',
+    EmpName: 'Shekhar',
+    Age: 29,
+    Gender: 'Male',
+    City: 'Pune'
+  }
+]
+newHRDatabase> createCollection("ProfessionalInfo")
+ReferenceError: createCollection is not defined
+newHRDatabase> db.createCollection("ProfessionalInfo")
+{ ok: 1 }
+newHRDatabase> show collections
+PersonalInfo
+ProfessionalInfo
+newHRDatabase> db.ProfessionalInfo.insertMany([{Designation:'Consultant',Department:'Finance',Income:80000},{Designation:'Sr.Developer',Department:'IT',Income:90000},{Designation:'Data Analyst',Department:'Software',Income:150000},{{Designation:'Manager',Department:'Logistics',Income:200000}
+Uncaught:
+SyntaxError: Unexpected token (1:217)
+
+> 1 | db.ProfessionalInfo.insertMany([{Designation:'Consultant',Department:'Finance',Income:80000},{Designation:'Sr.Developer',Department:'IT',Income:90000},{Designation:'Data Analyst',Department:'Software',Income:150000},{{Designation:'Manager',Department:'Logistics',Income:200000}
+    |                                                                                                                                                                                                                          ^
+  2 |
+
+newHRDatabase> db.ProfessionalInfo.insertMany([{Designation:'Consultant',Department:'Finance',Income:80000},{Designation:'Sr.Developer',Department:'IT',Income:90000},{Designation:'Data Analyst',Department:'Software',Income:150000},{Designation:'Manager',Department:'Logistics',Income:200000}
+...
+...
+...
+...
+...
+...
+
+
+...
+... quit()
+Uncaught:
+SyntaxError: Unexpected token, expected "," (8:0)
+
+  6 |
+  7 |
+> 8 | quit()
+    | ^
+  9 |
+
+newHRDatabase> db.ProfessionalInfo.insertMany([{Designation:'Consultant',Department:'Finance',Income:80000},{Designation:'Sr.Developer',Department:'IT',Income:90000},{Designation:'Data Analyst',Department:'Software',Income:150000},{Designation:'Manager',Department:'Logistics',Income:200000}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("6348ea016defcc82cf3dafc7"),
+    '1': ObjectId("6348ea016defcc82cf3dafc8"),
+    '2': ObjectId("6348ea016defcc82cf3dafc9"),
+    '3': ObjectId("6348ea016defcc82cf3dafca")
+  }
+}
+newHRDatabase> db.PersonalInfo.update({Age:27},{$set{Age:25}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:37)
+
+> 1 | db.PersonalInfo.update({Age:27},{$set{Age:25}})
+    |                                      ^
+  2 |
+
+newHRDatabase> db.PersonalInfo.update({Age:27}{$set{Age:25}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:31)
+
+> 1 | db.PersonalInfo.update({Age:27}{$set{Age:25}})
+    |                                ^
+  2 |
+
+newHRDatabase>
+
+newHRDatabase> db.PersonalInfo.update({Age:27},{$set{Age:25}})
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:37)
+
+> 1 | db.PersonalInfo.update({Age:27},{$set{Age:25}})
+    |                                      ^
+  2 |
+
+newHRDatabase> db.PersonalInfo.update({Age:27},{$set:{Age:25}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+newHRDatabase> db.PersonalInfo.find().pretty()
+[
+  {
+    _id: ObjectId("6348e6b96defcc82cf3dafc3"),
+    empid: 'X20221010',
+    EmpName: 'Pritam',
+    Age: 26,
+    Gender: 'Male',
+    Contact: 9988776655,
+    City: 'Delhi'
+  },
+  {
+    _id: ObjectId("6348e6b96defcc82cf3dafc4"),
+    empid: 'X20221011',
+    EmpName: 'Gitanjali',
+    Age: 25,
+    Gender: 'Female',
+    City: 'Newyork'
+  },
+  {
+    _id: ObjectId("6348e7426defcc82cf3dafc5"),
+    empid: 'X20221013',
+    EmpName: 'Sonam',
+    Age: 27,
+    Gender: 'Female',
+    Contact: 7788995533,
+    City: 'Bengaluru'
+  },
+  {
+    _id: ObjectId("6348e7426defcc82cf3dafc6"),
+    empid: 'X20221017',
+    EmpName: 'Shekhar',
+    Age: 29,
+    Gender: 'Male',
+    City: 'Pune'
+  }
+]
+newHRDatabase> db.PersonalInfo.update({Age:27,City:'Bengaluru'},{$set:{Age:31,City:'Kolkata'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+newHRDatabase> db.PersonalInfo.find().pretty()
+[
+  {
+    _id: ObjectId("6348e6b96defcc82cf3dafc3"),
+    empid: 'X20221010',
+    EmpName: 'Pritam',
+    Age: 26,
+    Gender: 'Male',
+    Contact: 9988776655,
+    City: 'Delhi'
+  },
+  {
+    _id: ObjectId("6348e6b96defcc82cf3dafc4"),
+    empid: 'X20221011',
+    EmpName: 'Gitanjali',
+    Age: 25,
+    Gender: 'Female',
+    City: 'Newyork'
+  },
+  {
+    _id: ObjectId("6348e7426defcc82cf3dafc5"),
+    empid: 'X20221013',
+    EmpName: 'Sonam',
+    Age: 31,
+    Gender: 'Female',
+    Contact: 7788995533,
+    City: 'Kolkata'
+  },
+  {
+    _id: ObjectId("6348e7426defcc82cf3dafc6"),
+    empid: 'X20221017',
+    EmpName: 'Shekhar',
+    Age: 29,
+    Gender: 'Male',
+    City: 'Pune'
+  }
+]
+newHRDatabase>
